@@ -10,6 +10,7 @@ import com.finflow.auth.common.ApiResponse;
 import com.finflow.auth.dto.request.RegisterRequest;
 import com.finflow.auth.dto.response.RegisterResponse;
 import com.finflow.auth.service.interfaces.AuthService;
+import com.finflow.auth.util.DateTimeUtil;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class AuthController {
                 ApiResponse.<RegisterResponse>builder()
                         .success(true)
                         .message("Registration Successful")
-                        .timestamp(LocalDateTime.now())
+                        .timestamp(DateTimeUtil.now())
                         .data(response)
                         .build();
 

@@ -9,8 +9,10 @@ import com.finflow.auth.exception.UsernameAlreadyExistsException;
 import com.finflow.auth.repository.RoleRepository;
 import com.finflow.auth.repository.UserRepository;
 import com.finflow.auth.service.interfaces.AuthService;
+import com.finflow.auth.util.DateTimeUtil;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
@@ -55,7 +58,7 @@ public class AuthServiceImpl implements AuthService {
     	        .build();
 
     	user.setId(UUID.randomUUID());
-    	user.setCreatedAt(LocalDateTime.now());
+    	user.setCreatedAt(DateTimeUtil.now());
 
     	userRepository.save(user);
     	
