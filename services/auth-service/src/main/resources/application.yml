@@ -13,9 +13,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-
     show-sql: true
-
     properties:
       hibernate:
         format_sql: true
@@ -23,3 +21,28 @@ spring:
   sql:
     init:
       mode: never
+
+  flyway:
+    enabled: true
+    schemas: auth
+    default-schema: auth
+    locations: classpath:db/migration
+    
+
+# ===========================
+# JWT Configuration
+# ===========================
+jwt:
+  access-token:
+    secret: 9a7f8c5d1b3e4f6a8c9d0e2f4b6a8c1d9e7f5c3b1a9d8e6f4c2b0a8d6e4f2c1
+    expiration: 900000
+  
+  refresh-token:
+    expiration: 604800000
+# ===========================
+# Logging
+# ===========================
+logging:
+  level:
+    org.springframework.security: INFO
+    com.finflow.auth: DEBUG

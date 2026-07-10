@@ -31,7 +31,7 @@ public class User extends BaseEntity {
     @Column(name = "failed_login_attempts")
     private Integer failedLoginAttempts;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 }
